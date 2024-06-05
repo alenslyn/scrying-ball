@@ -1,3 +1,10 @@
+.ball-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
 .ball {
   width: 300px;
   height: 300px;
@@ -8,11 +15,26 @@
     10px 0 60px #0ff;
   animation: load 2s infinite;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
 .ball-pressed {
   background-color: black;
   box-shadow: none;
+}
+
+.ball-text {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 1em;
+  text-align: center;
 }
 
 @keyframes load {

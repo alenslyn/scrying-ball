@@ -12,14 +12,15 @@ const Ball = () => {
       setIsPressed(false);
     }, 200);
   };
+
   return (
-    <>
+    <div className="ball-container">
       <div
         className={`ball ${isPressed ? "ball-pressed" : ""}`}
         onClick={handleClick}
       ></div>
-      <p>{text}</p>
-    </>
+      <p className="ball-text">{text}</p>
+    </div>
   );
 };
 
