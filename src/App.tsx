@@ -1,11 +1,11 @@
 import "./App.css";
+import Ball from "./components/ball/Ball";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div className="ball"></div>
-        <p>Well...</p>
+        <Ball />
       </header>
     </div>
   );
