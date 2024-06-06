@@ -1,8 +1,14 @@
 .ball-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  cursor: pointer;
+}
+
+.ball-inner {
+  position: relative;
 }
 
 .ball {
@@ -14,11 +20,11 @@
     inset -20px 0 300px #0ff, 0 0 5px #fff, -10px 0 60px #ee82ee,
     10px 0 60px #0ff;
   animation: load 2s infinite;
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
+  transition: all 0.3s ease;
 }
 
 .ball-pressed {
@@ -26,15 +32,31 @@
   box-shadow: none;
 }
 
+.ball-big {
+  width: 500px;
+  height: 500px;
+}
+
 .ball-text {
   position: absolute;
-  top: 48%;
+  top: 43%;
   left: 50%;
-  font-family: Georgia, "Times New Roman", Times, serif;
   transform: translate(-50%, -50%);
+  font-family: Georgia, "Times New Roman", Times, serif;
   color: white;
   font-size: 1em;
   text-align: center;
+}
+
+.ball-big .ball-text {
+  font-size: 1.5em;
+}
+
+.reroll-icon {
+  margin-top: 0.5em;
+  font-size: 1.5em;
+
+  color: #ffffff;
 }
 
 @keyframes load {
