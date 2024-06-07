@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { IoMdRefresh } from "react-icons/io";
 import "./Ball.css";
 
@@ -7,6 +7,20 @@ const Ball: React.FC = () => {
   const [text, setText] = useState("Well...");
   const [pressCount, setPressCount] = useState(0);
   const [showReRoll, setShowReRoll] = useState(false);
+  const [isThinking, setIsThinking] = useState(false);
+  const [thinkingText, setThinkingText] = useState("Hmm");
+
+  useEffect(() => {
+    if (isThinking) {
+      let dotCount = 0;
+      const interval = setInterval(() => {
+        dotCount = (dotCount + 1) % 4;
+        setThinkingText(`Hmm${".".repeat(dotCount)}`);
+      }, 500);
+
+      return () => clearInterval(interval);
+    }
+  }, [isThinking]);
 
   const handleClick = () => {
     if (pressCount < 2) {
@@ -17,8 +31,13 @@ const Ball: React.FC = () => {
         setIsPressed(false);
       }, 220);
     } else {
-      setText("Here is your answer!");
-      setShowReRoll(true);
+      setIsThinking(true);
+      setText("Hmm");
+      setTimeout(() => {
+        setText("Here is your answer!");
+        setIsThinking(false);
+        setShowReRoll(true);
+      }, 5000);
     }
   };
 
@@ -35,10 +54,10 @@ const Ball: React.FC = () => {
         <div
           className={`ball ${isPressed ? "ball-pressed" : ""} ${
             showReRoll ? "ball-big" : ""
-          }`}
+          } ${isThinking ? "ball-thinking" : ""}`}
           onClick={handleClick}
         ></div>
-        <p className="ball-text">{text}</p>
+        <p className="ball-text">{isThinking ? thinkingText : text}</p>
       </div>
       {showReRoll && (
         <div className="reroll-icon" onClick={handleReRoll}>

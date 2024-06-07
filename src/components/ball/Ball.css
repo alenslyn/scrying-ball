@@ -37,15 +37,18 @@
   height: 500px;
 }
 
+.ball-thinking {
+  animation: pulsate 5s infinite;
+}
+
 .ball-text {
   position: absolute;
-  top: 43%;
+  top: 44%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: Georgia, "Times New Roman", Times, serif;
   color: white;
   font-size: 1em;
-  text-align: center;
 }
 
 .ball-big .ball-text {
@@ -55,8 +58,8 @@
 .reroll-icon {
   margin-top: 0.5em;
   font-size: 1.5em;
-
   color: #ffffff;
+  cursor: pointer;
 }
 
 @keyframes load {
@@ -69,5 +72,26 @@
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes pulsate {
+  0% {
+    box-shadow: inset 0 0 50px #fff, inset 20px 0 60px #ee82ee,
+      inset -20px 0 60px #0ff, inset 20px 0 300px #ee82ee,
+      inset -20px 0 300px #0ff, 0 0 5px #fff, -10px 0 60px #ee82ee,
+      10px 0 60px #0ff;
+  }
+  30% {
+    box-shadow: inset 0 0 100px rgb(249, 249, 249), inset 40px 0 120px #ee82ee,
+      inset -40px 0 120px rgb(0, 255, 34), inset 40px 0 600px #ee82ee,
+      inset -40px 0 600px rgb(255, 187, 0), 0 0 10px #fff, -20px 0 120px #ee82ee,
+      20px 0 120px rgb(0, 102, 255);
+  }
+  100% {
+    box-shadow: inset 0 0 50px rgb(4, 102, 221), inset 20px 0 60px #ee82ee,
+      inset -20px 0 60px #0ff, inset 20px 0 300px #ee82ee,
+      inset -20px 0 300px rgb(234, 0, 255), 0 0 5px #fff, -10px 0 60px #ee82ee,
+      10px 0 60px #0ff;
   }
 }
