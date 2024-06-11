@@ -16,14 +16,14 @@ const useBallLogic = (): UseBallLogic => {
   const [pressCount, setPressCount] = useState(0);
   const [showReRoll, setShowReRoll] = useState(false);
   const [isThinking, setIsThinking] = useState(false);
-  const [thinkingText, setThinkingText] = useState("Hmm");
+  const [thinkingText, setThinkingText] = useState("Let's see");
 
   useEffect(() => {
     if (isThinking) {
       let dotCount = 0;
       const interval = setInterval(() => {
         dotCount = (dotCount + 1) % 4;
-        setThinkingText(`Hmm${".".repeat(dotCount)}`);
+        setThinkingText(`Let's see${".".repeat(dotCount)}`);
       }, 500);
 
       return () => clearInterval(interval);
