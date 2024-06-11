@@ -3,7 +3,11 @@ import { IoMdRefresh } from "react-icons/io";
 import useBallLogic from "./useBallLogic";
 import "./Ball.css";
 
-const Ball: React.FC = () => {
+interface BallProps {
+  score: number;
+}
+
+const Ball: React.FC<BallProps> = ({ score }) => {
   const {
     isPressed,
     text,
@@ -12,7 +16,7 @@ const Ball: React.FC = () => {
     thinkingText,
     handleClick,
     handleReRoll,
-  } = useBallLogic();
+  } = useBallLogic(score);
 
   return (
     <div className="ball-container">

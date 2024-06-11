@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./App.css";
 import Ball from "./components/ball/Ball";
 import Quiz from "./components/quiz/Quiz";
@@ -18,7 +18,7 @@ function App() {
         {quizCompleted ? (
           <>
             <p>Your score: {score}</p>
-            <Ball />
+            <Ball score={score} />
           </>
         ) : (
           <Quiz onComplete={handleQuizComplete} />

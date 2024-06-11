@@ -10,7 +10,7 @@ interface UseBallLogic {
   handleReRoll: () => void;
 }
 
-const useBallLogic = (): UseBallLogic => {
+const useBallLogic = (score: number): UseBallLogic => {
   const [isPressed, setIsPressed] = useState(false);
   const [text, setText] = useState("Well...");
   const [pressCount, setPressCount] = useState(0);
@@ -30,7 +30,7 @@ const useBallLogic = (): UseBallLogic => {
     }
   }, [isThinking]);
 
-  const handleClick = async () => {
+  const handleClick = () => {
     if (pressCount < 2) {
       setPressCount((prevCount) => prevCount + 1);
       setIsPressed(true);
@@ -42,17 +42,10 @@ const useBallLogic = (): UseBallLogic => {
       setIsThinking(true);
       setText("Hmm");
 
-      setTimeout(async () => {
-        try {
-          const response = await fetch("https://api.adviceslip.com/advice");
-          const data = await response.json();
-          setText(data.slip.advice);
-        } catch (error) {
-          setText("Failed to get advice. Try again.");
-        } finally {
-          setIsThinking(false);
-          setShowReRoll(true);
-        }
+      setTimeout(() => {
+        setIsThinking(false);
+        setText(`That's ${score}`);
+        setShowReRoll(true);
       }, 5000);
     }
   };
