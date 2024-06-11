@@ -5,9 +5,10 @@ import "./Ball.css";
 
 interface BallProps {
   score: number;
+  onReRoll: () => void;
 }
 
-const Ball: React.FC<BallProps> = ({ score }) => {
+const Ball: React.FC<BallProps> = ({ score, onReRoll }) => {
   const {
     isPressed,
     text,
@@ -15,8 +16,13 @@ const Ball: React.FC<BallProps> = ({ score }) => {
     isThinking,
     thinkingText,
     handleClick,
-    handleReRoll,
+    handleReRoll: handleInternalReRoll,
   } = useBallLogic(score);
+
+  const handleReRollClick = () => {
+    handleInternalReRoll();
+    onReRoll();
+  };
 
   return (
     <div className="ball-container">
@@ -30,7 +36,7 @@ const Ball: React.FC<BallProps> = ({ score }) => {
         <p className="ball-text">{isThinking ? thinkingText : text}</p>
       </div>
       {showReRoll && (
-        <div className="reroll-icon" onClick={handleReRoll}>
+        <div className="reroll-icon" onClick={handleReRollClick}>
           <IoMdRefresh />
         </div>
       )}

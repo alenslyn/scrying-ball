@@ -12,13 +12,18 @@ function App() {
     setQuizCompleted(true);
   };
 
+  const handleReRoll = () => {
+    setQuizCompleted(false);
+    setScore(0);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
         {quizCompleted ? (
           <>
             <p>Your score: {score}</p>
-            <Ball score={score} />
+            <Ball score={score} onReRoll={handleReRoll} />
           </>
         ) : (
           <Quiz onComplete={handleQuizComplete} />

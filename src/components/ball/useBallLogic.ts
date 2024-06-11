@@ -12,7 +12,7 @@ interface UseBallLogic {
 
 const useBallLogic = (score: number): UseBallLogic => {
   const [isPressed, setIsPressed] = useState(false);
-  const [text, setText] = useState("Well...");
+  const [text, setText] = useState("PRESS ME");
   const [pressCount, setPressCount] = useState(0);
   const [showReRoll, setShowReRoll] = useState(false);
   const [isThinking, setIsThinking] = useState(false);
@@ -34,7 +34,9 @@ const useBallLogic = (score: number): UseBallLogic => {
     if (pressCount < 2) {
       setPressCount((prevCount) => prevCount + 1);
       setIsPressed(true);
-      setText((prevText) => (prevText === "Well..." ? "Try again?" : "Again?"));
+      setText((prevText) =>
+        prevText === "PRESS ME" ? "Try again?" : "Again?"
+      );
       setTimeout(() => {
         setIsPressed(false);
       }, 220);
@@ -52,7 +54,7 @@ const useBallLogic = (score: number): UseBallLogic => {
 
   const handleReRoll = () => {
     setPressCount(0);
-    setText("Well...");
+    setText("PRESS ME");
     setShowReRoll(false);
     setIsPressed(false);
   };

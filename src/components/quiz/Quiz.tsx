@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 type Question = {
   question: string;
@@ -21,6 +21,10 @@ const questions: Question[] = [
   {
     question: "This or that?",
     options: ["this", "that"],
+  },
+  {
+    question: "What is the answer to everything?",
+    options: ["42", "24"],
   },
 ];
 
@@ -62,4 +66,4 @@ const Quiz: React.FC<QuizProps> = ({ onComplete }) => {
 
 export default Quiz;
 
-// 4 5 6 7 8
+// 4 5 6 7 8 9 10
