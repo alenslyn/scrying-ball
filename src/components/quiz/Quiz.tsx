@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Quiz.css";
 
 type Question = {
@@ -38,6 +38,11 @@ interface QuizProps {
 const Quiz: React.FC<QuizProps> = ({ onComplete }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
+  const [fade, setFade] = useState(true);
+
+  useEffect(() => {
+    setFade(true);
+  }, [currentQuestion]);
 
   const handleAnswer = (answerIndex: number) => {
     if (answerIndex === 0) {
@@ -46,17 +51,20 @@ const Quiz: React.FC<QuizProps> = ({ onComplete }) => {
       setScore(score + 2);
     }
 
-    if (currentQuestion < questions.length - 1) {
-      setCurrentQuestion(currentQuestion + 1);
-    } else {
-      onComplete(score + (answerIndex === 0 ? 1 : 2));
-    }
+    setFade(false);
+    setTimeout(() => {
+      if (currentQuestion < questions.length - 1) {
+        setCurrentQuestion(currentQuestion + 1);
+      } else {
+        onComplete(score + (answerIndex === 0 ? 1 : 2));
+      }
+    }, 500);
   };
 
   const { question, options } = questions[currentQuestion];
 
   return (
-    <div className="quiz">
+    <div className={`quiz ${fade ? "fade-in" : "fade-out"}`}>
       <h2>{question}</h2>
       {options.map((option, index) => (
         <button
