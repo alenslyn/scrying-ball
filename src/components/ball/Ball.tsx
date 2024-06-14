@@ -15,6 +15,7 @@ const Ball: React.FC<BallProps> = ({ score, onReRoll }) => {
     showReRoll,
     isThinking,
     thinkingText,
+    imageSrc,
     handleClick,
     handleReRoll: handleInternalReRoll,
   } = useBallLogic(score);
@@ -33,7 +34,12 @@ const Ball: React.FC<BallProps> = ({ score, onReRoll }) => {
           } ${isThinking ? "ball-thinking" : ""}`}
           onClick={handleClick}
         ></div>
-        <p className="ball-text">{isThinking ? thinkingText : text}</p>
+        <p onClick={handleClick} className="ball-text">
+          {isThinking ? thinkingText : text}
+        </p>
+        {imageSrc && (
+          <img src={imageSrc} alt="score result" className="ball-image" />
+        )}
       </div>
       {showReRoll && (
         <div className="reroll-icon" onClick={handleReRollClick}>

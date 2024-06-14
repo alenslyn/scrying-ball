@@ -1,4 +1,10 @@
 import { useState, useEffect } from "react";
+import image5 from "./images/haha.jpeg";
+import image6 from "./images/wise.jpeg";
+import image7 from "./images/weird.jpeg";
+import image8 from "./images/social.jpeg";
+import image9 from "./images/reddot.jpeg";
+import image10 from "./images/like.jpeg";
 
 interface UseBallLogic {
   isPressed: boolean;
@@ -6,6 +12,7 @@ interface UseBallLogic {
   showReRoll: boolean;
   isThinking: boolean;
   thinkingText: string;
+  imageSrc: string | null;
   handleClick: () => void;
   handleReRoll: () => void;
 }
@@ -17,6 +24,7 @@ const useBallLogic = (score: number): UseBallLogic => {
   const [showReRoll, setShowReRoll] = useState(false);
   const [isThinking, setIsThinking] = useState(false);
   const [thinkingText, setThinkingText] = useState("Let's see");
+  const [imageSrc, setImageSrc] = useState<string | null>(null);
 
   useEffect(() => {
     if (isThinking) {
@@ -42,11 +50,11 @@ const useBallLogic = (score: number): UseBallLogic => {
       }, 220);
     } else {
       setIsThinking(true);
-      setText("Hmm");
+      setText("");
 
       setTimeout(() => {
         setIsThinking(false);
-        setText(`That's ${score}`);
+        setImageSrc(getImageForScore(score));
         setShowReRoll(true);
       }, 5000);
     }
@@ -57,6 +65,26 @@ const useBallLogic = (score: number): UseBallLogic => {
     setText("PRESS ME");
     setShowReRoll(false);
     setIsPressed(false);
+    setImageSrc(null);
+  };
+
+  const getImageForScore = (score: number): string => {
+    switch (score) {
+      case 5:
+        return image5;
+      case 6:
+        return image6;
+      case 7:
+        return image7;
+      case 8:
+        return image8;
+      case 9:
+        return image9;
+      case 10:
+        return image10;
+      default:
+        return "";
+    }
   };
 
   return {
@@ -65,6 +93,7 @@ const useBallLogic = (score: number): UseBallLogic => {
     showReRoll,
     isThinking,
     thinkingText,
+    imageSrc,
     handleClick,
     handleReRoll,
   };

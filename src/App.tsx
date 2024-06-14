@@ -22,7 +22,6 @@ function App() {
       <header className="App-header">
         {quizCompleted ? (
           <>
-            <p>Your score: {score}</p>
             <Ball score={score} onReRoll={handleReRoll} />
           </>
         ) : (

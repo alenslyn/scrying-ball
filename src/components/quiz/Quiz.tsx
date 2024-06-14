@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./Quiz.css";
 
 type Question = {
   question: string;
@@ -7,24 +8,26 @@ type Question = {
 
 const questions: Question[] = [
   {
-    question: "1 or 2?",
-    options: ["1", "2"],
+    question:
+      "If you could live in the universe of any video game, which one would you choose?",
+    options: ["The Legend of Zelda", "Animal Crossing"],
   },
   {
-    question: "What is 2 + 2?",
-    options: ["3", "4"],
+    question:
+      "If you could only speak in song lyrics for a week, which artist’s lyrics would you choose?",
+    options: ["Taylor Swift", "Wheeler Walker Jr."],
   },
   {
     question: "3 or 4?",
     options: ["3", "4"],
   },
   {
-    question: "This or that?",
-    options: ["this", "that"],
+    question: "If you were a superhero, what would your superpower be?",
+    options: [" Clean rooms instantly", "Speak any language"],
   },
   {
-    question: "What is the answer to everything?",
-    options: ["42", "24"],
+    question: "Do aliens live among us??",
+    options: ["Yes", "Yes, I'm the one"],
   },
 ];
 
@@ -56,7 +59,11 @@ const Quiz: React.FC<QuizProps> = ({ onComplete }) => {
     <div className="quiz">
       <h2>{question}</h2>
       {options.map((option, index) => (
-        <button key={option} onClick={() => handleAnswer(index)}>
+        <button
+          className="button-85"
+          key={option}
+          onClick={() => handleAnswer(index)}
+        >
           {option}
         </button>
       ))}
