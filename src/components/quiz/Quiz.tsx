@@ -23,7 +23,7 @@ const questions: Question[] = [
   },
   {
     question: "If you were a superhero, what would your superpower be?",
-    options: [" Clean rooms instantly", "Speak any language"],
+    options: ["Clean rooms instantly", "Speak any language"],
   },
   {
     question: "Do aliens live among us??",

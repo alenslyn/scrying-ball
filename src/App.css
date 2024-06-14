@@ -1,9 +1,9 @@
 .App {
   text-align: center;
+  background: linear-gradient(0deg, #000, #2c003e);
 }
 
 .App-header {
-  background: linear-gradient(0deg, #000, #2c003e);
   min-height: 100vh;
   display: flex;
   font-family: Papyrus, fantasy;
