@@ -1,6 +1,7 @@
 {
   "name": "srying_ball",
   "version": "0.1.0",
+  "homepage": "https://alenslyn.github.io/scrying_ball/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
@@ -42,5 +43,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
   }
 }
