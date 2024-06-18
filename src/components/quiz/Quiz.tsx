@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./Quiz.css";
+import StartScreen from "../start/StartScreen";
 
 type Question = {
   question: string;
@@ -38,7 +39,16 @@ interface QuizProps {
 const Quiz: React.FC<QuizProps> = ({ onComplete }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
-  const [fade, setFade] = useState(true);
+  const [quizStarted, setQuizStarted] = useState(false);
+  const [fade, setFade] = useState(false);
+
+  const handleStartQuiz = () => {
+    setFade(false);
+    setTimeout(() => {
+      setQuizStarted(true);
+      setFade(true);
+    }, 700);
+  };
 
   useEffect(() => {
     setFade(true);
@@ -58,8 +68,13 @@ const Quiz: React.FC<QuizProps> = ({ onComplete }) => {
       } else {
         onComplete(score + (answerIndex === 0 ? 1 : 2));
       }
+      setFade(true);
     }, 500);
   };
+
+  if (!quizStarted) {
+    return <StartScreen onStart={handleStartQuiz} />;
+  }
 
   const { question, options } = questions[currentQuestion];
 
@@ -80,5 +95,3 @@ const Quiz: React.FC<QuizProps> = ({ onComplete }) => {
 };
 
 export default Quiz;
-
-// 4 5 6 7 8 9 10
